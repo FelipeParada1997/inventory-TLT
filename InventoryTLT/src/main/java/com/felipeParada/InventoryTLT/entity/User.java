@@ -15,10 +15,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "users")
 public class User {
     
@@ -27,25 +29,9 @@ public class User {
     @Column(name = "id")
     private Long userId;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDateTime;
-
     @NotNull
     @NotBlank
-    private String createdUser;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDateTime;
-
-    private String lastModifiedUser;
-
-    @NotNull
-    @NotBlank
-    private Long userContactNumber;
-
-    @NotNull
-    @NotBlank
-    private String userEmail;
+    private String userName;
 
     @NotNull
     @NotBlank
@@ -57,25 +43,28 @@ public class User {
 
     @NotNull
     @NotBlank
-    private String userName;
+    private String userEmail;
+
+    @NotNull
+    @NotBlank
+    private Long userContactNumber;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    private String createdUser;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
+
+    private String updatedUser;
+
+    
+
+
 /* 
     @OneToMany(mappedBy="user")
 	private List<UserRole> userRoles;
-
-
-public UserRole addUserRole(UserRole userRole) {
-		getUserRoles().add(userRole);
-		userRole.setUser(this);
-
-		return userRole;
-	}
-
-	public UserRole removeUserRole(UserRole userRole) {
-		getUserRoles().remove(userRole);
-		userRole.setUser(null);
-
-		return userRole;
-	}
 
 */
 }
